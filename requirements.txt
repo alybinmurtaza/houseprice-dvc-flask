@@ -1,0 +1,7 @@
+﻿dvc
+pandas
+scikit-learn
+numpy
+joblib
+flask
+PyYAML
