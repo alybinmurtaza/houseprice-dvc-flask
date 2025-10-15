@@ -1,0 +1,39 @@
+﻿stages:
+  prepare:
+    cmd: .\.venv\Scripts\python.exe src/prepare.py
+    deps:
+      - src/prepare.py
+      - data/raw
+      - params.yaml
+    outs:
+      - data/processed
+
+  features:
+    cmd: .\.venv\Scripts\python.exe src/features.py
+    deps:
+      - src/features.py
+      - data/processed
+      - params.yaml
+    outs:
+      - data/features
+
+  train:
+    cmd: .\.venv\Scripts\python.exe src/train.py
+    deps:
+      - src/train.py
+      - data/features
+      - params.yaml
+    outs:
+      - models/model.pkl
+    metrics:
+      - metrics/train_metrics.json
+
+  evaluate:
+    cmd: .\.venv\Scripts\python.exe src/evaluate.py
+    deps:
+      - src/evaluate.py
+      - models/model.pkl
+      - data/features
+      - params.yaml
+    metrics:
+      - metrics/test_metrics.json
