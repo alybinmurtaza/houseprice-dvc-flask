@@ -1,80 +1,70 @@
-House Price Prediction with DVC & Flask
-This project is an end-to-end Machine Learning application designed to predict house prices. It leverages DVC (Data Version Control) to manage data lineage and ML pipelines, ensuring reproducibility, and uses Flask to provide a user-friendly web interface for real-time predictions.
+# House Price Prediction (DVC + Flask)
 
-🚀 Project Overview
-The goal of this project is to build a robust regression model that estimates property values based on various features (e.g., area, number of bedrooms, location). By integrating DVC, the project follows a modular "pipeline" approach where each stage (data ingestion, preprocessing, training, evaluation) is version-controlled and reproducible.
+This repository contains an end-to-end Machine Learning pipeline for predicting house prices. It integrates **DVC (Data Version Control)** for pipeline management and **Flask** for serving the model via a web interface.
 
-✨ Key Features
-Data Versioning: Track changes in datasets and models using DVC without bloating the Git repository.
+## 🚀 Features
+* **Modular Pipeline:** Managed via `dvc.yaml` for reproducible experiments.
+* **Data Versioning:** Tracks large datasets and model weights without cluttering Git.
+* **Web Deployment:** A lightweight Flask API to get real-time predictions.
+* **Config Driven:** All hyperparameters and file paths are managed in `params.yaml`.
 
-Automated Pipeline: Reproduce the entire workflow with a single command (dvc repro).
+---
 
-Web Interface: A responsive Flask application where users can input house details and get instant price estimates.
+## 🛠️ Project Structure
+text
+├── data/               # Data directory (tracked by DVC)
+├── models/             # Saved model artifacts
+├── src/                # Source code
+│   ├── stage_01_prepare.py
+│   ├── stage_02_train.py
+│   └── stage_03_evaluate.py
+├── templates/          # Flask HTML templates
+├── app.py              # Flask application entry point
+├── dvc.yaml            # DVC pipeline stages
+├── params.yaml         # Parameters for training
+└── requirements.txt    # Python dependencies    
 
-Experiment Tracking: Efficiently manage different model versions and hyperparameters.
 
-🛠️ Tech Stack
-Language: Python
-
-ML Libraries: Scikit-Learn, Pandas, NumPy
-
-MLOps: DVC (Data Version Control)
-
-Backend: Flask (Web Framework)
-
-Frontend: HTML/CSS (Jinja2 Templates)
-
-📁 Project Structure
-Plaintext
-├── data/               # Raw and processed datasets (tracked by DVC)
-├── models/             # Trained model artifacts (.pkl or .joblib)
-├── notebooks/          # Jupyter notebooks for EDA and prototyping
-├── src/                # Source code for the ML pipeline
-│   ├── stage_01_load.py
-│   ├── stage_02_split.py
-│   └── stage_03_train.py
-├── templates/          # HTML files for the Flask app
-├── static/             # CSS and images
-├── app.py              # Flask entry point
-├── dvc.yaml            # DVC pipeline definition
-├── params.yaml         # Hyperparameters and configurations
-└── requirements.txt    # Project dependencies
-⚙️ Installation & Setup
-Clone the repository:
+⚙️ Getting Started
+1. Environment Setup
+Clone the repository and create a virtual environment:
 
 Bash
-git clone https://github.com/alybinmurtaza/houseprice-dvc-flask.git
+git clone [https://github.com/alybinmurtaza/houseprice-dvc-flask.git](https://github.com/alybinmurtaza/houseprice-dvc-flask.git)
 cd houseprice-dvc-flask
-Create a virtual environment:
-
-Bash
 python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-Install dependencies:
-
-Bash
+source venv/bin/activate  # Windows: venv\Scripts\activate
 pip install -r requirements.txt
-Pull the data (if DVC remote is configured):
-
-Bash
-dvc pull
-🏃 Usage
-Running the ML Pipeline
-To run the end-to-end data processing and training pipeline:
+2. Reproduce the Pipeline
+If you have DVC installed, you can trigger the entire workflow (data prep to evaluation) with:
 
 Bash
 dvc repro
-Running the Web App
-To launch the Flask server locally:
+3. Run the Web App
+Start the Flask server to view the UI:
 
 Bash
 python app.py
-Open your browser and navigate to http://127.0.0.1:5000/.
+Visit http://127.0.0.1:5000 in your browser.
 
-📊 Model Evaluation
-After running the pipeline, you can check the metrics (e.g., RMSE, R²) using:
+📊 MLOps Workflow
+Data Ingestion: Raw data is pulled and versioned.
 
-Bash
-dvc metrics show
+Training: Scikit-learn models are trained based on params.yaml.
+
+Evaluation: Metrics are logged to track model performance.
+
+Deployment: The best model is loaded by Flask for inference.
+
 🤝 Contributing
-Contributions are welcome! If you'd like to improve the model accuracy or add new features, please fork the repo and create a pull request.
+Feel free to open an issue or submit a pull request if you want to improve the model or the UI.
+
+Author: Ali Murtaza
+
+
+---
+
+### Why it might have looked "unformatted" before:
+* **Missing File Extension:** Ensure your file ends in `.md`.
+* **Preview Mode:** If you are using an editor like VS Code, press `Ctrl+Shift+V` to see the rendered version.
+* **GitHub View:** Once you commit and push `README.md` to the root of your GitHub.
