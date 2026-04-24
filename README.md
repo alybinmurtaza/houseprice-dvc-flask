@@ -59,7 +59,7 @@ Deployment: The best model is loaded by Flask for inference.
 🤝 Contributing
 Feel free to open an issue or submit a pull request if you want to improve the model or the UI.
 
-Author: Ali Murtaza
+Author: Hassan Ali Murtaza
 
 
 ---
